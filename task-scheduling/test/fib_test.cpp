@@ -1,12 +1,18 @@
 #include "gtest/gtest.h"
 
-int fib(int n);
+long serial_fib(long n);
 
-TEST(FactorialTest, Positive) {
-    EXPECT_EQ(fib(0), 1);
-    EXPECT_EQ(fib(1), 1);
-    EXPECT_EQ(fib(2), 2);
-    EXPECT_EQ(fib(3), 3);
-    EXPECT_EQ(fib(4), 5);
-    EXPECT_EQ(fib(5), 8);
+long parallel_fib(long n);
+
+TEST(SerialFibonacci, Positive) {
+    EXPECT_EQ(serial_fib(0), 1);
+    EXPECT_EQ(serial_fib(1), 1);
+    EXPECT_EQ(serial_fib(2), 2);
+    EXPECT_EQ(serial_fib(3), 3);
+    EXPECT_EQ(serial_fib(4), 5);
+    EXPECT_EQ(serial_fib(5), 8);
+}
+
+TEST(ParallelFibonacci, Positive) {
+    EXPECT_EQ(parallel_fib(17), serial_fib(17));
 }
