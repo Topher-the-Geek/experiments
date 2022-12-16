@@ -1,2 +1,3 @@
 def some_method(some_arg):
-    return 1
+    return some_result
+
