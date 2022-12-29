@@ -25,7 +25,9 @@ jobs:
           black: true
           black_auto_fix: true
 
-      - name: Lint
+      # Do not combine manual and auto fix, because the auto fix commit will wipe out the
+      # annotations for manual fixes.
+      - name: Lint without auto fix
         uses: wearerequired/lint-action@v2.1.0
         with:
           flake8: true
