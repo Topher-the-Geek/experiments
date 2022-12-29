@@ -18,11 +18,14 @@ jobs:
       - name: Install Python deps
         run: pip install black flake8
 
-      - name: Lint
+      - name: Lint with auto fix
         uses: wearerequired/lint-action@v2.1.0
         with:
           auto_fix: true
           black: true
           black_auto_fix: true
+
+      - name: Lint
+        uses: wearerequired/lint-action@v2.1.0
+        with:
           flake8: true
-          flake8_auto_fix: false
