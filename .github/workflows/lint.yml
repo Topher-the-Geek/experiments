@@ -1,0 +1,33 @@
+name: Lint
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+
+      - name: Install Python deps
+        run: pip install black flake8
+
+      - name: Lint with auto fix
+        uses: wearerequired/lint-action@v2.1.0
+        with:
+          auto_fix: true
+          black: true
+          black_auto_fix: true
+
+      # Do not combine manual and auto fix, because the auto fix commit will wipe out the
+      # annotations for manual fixes.
+      - name: Lint without auto fix
+        uses: wearerequired/lint-action@v2.1.0
+        with:
+          flake8: true
